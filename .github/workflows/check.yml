@@ -3,7 +3,7 @@ name: Проверка вакансий
 on:
   workflow_dispatch: {}
   schedule:
-    - cron: '0 4,9,14,18 * * *'
+    - cron: '0 */2 * * *'
 
 jobs:
   check:
@@ -21,6 +21,7 @@ jobs:
         env:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          SUPERJOB_KEY: ${{ secrets.SUPERJOB_KEY }}
         run: node index.js
 
       - name: Сохранить список отправленных вакансий
